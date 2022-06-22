@@ -10,9 +10,7 @@ const postUsuario = async (req,res) => {
     let email = req.body.email
     let senha = req.body.senha
 
-
     if(nome !== undefined && email !== undefined && senha !== undefined){
-
 
         try{
 
@@ -31,20 +29,66 @@ const postUsuario = async (req,res) => {
             res.status(400).json({err: err.errors[0].message}).end()
         }
 
-
     }else{
 
         res.status(400).json({"err": "informe os campos nome, email, senha"}).end()
     }
+}
 
+const getAllUsuarios = async (req, res) => {
+
+    try{
+
+        let resultado = await usuario.findAll({
+            attributes: ['id_usuario', 'tipo_usuario', 'nome', 'foto', 'telefone', 'email']
+        })
+
+        if(resultado.length > 0){
+
+            res.status(200).json(resultado).end()
     
+        }else{
+            res.status(400).json({"err": "nenhum usuário encontrado"}).end()
+        }
 
+    }catch(err){
+        res.status(400).json({err: err.errors[0].message}).end()
+    }
 
+}
+
+const loginUsuario = async (req,res) => {
+
+    let email = req.body.email
+    let senha = req.body.senha
+
+    if(email !== undefined && senha !== undefined){
+        try{
+
+            let resultado = await usuario.findOne({ where: { email: email, senha: senha }, 
+                attributes: ['id_usuario', 'tipo_usuario', 'nome', 'foto', 'telefone', 'email']
+            })
+
+            if(resultado !== null){
+                res.status(200).json(resultado).end()
+            }
+            else{
+                res.status(400).json({"err": "usuário não encontrado"}).end()
+            }
+        }catch(err){
+            res.status(400).json({err: err.errors[0].message}).end()
+        }
+
+    }else{
+        res.status(400).json({"err": "informe o email e senha"}).end()
+    }
 }
 
 
 
 module.exports = {
-    postUsuario
+    postUsuario,
+    getAllUsuarios,
+    loginUsuario
 }
 
