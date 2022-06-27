@@ -3,7 +3,7 @@ const database = require('../database/connection')
 
 
 const estrutura_campeonato = database.define("estrutura_campeonato", {
-    id_estrura: {
+    id_estrutura: {
         type: Sequelize.INTEGER,
         allowNull: false,
         primaryKey: true,
@@ -26,7 +26,7 @@ const estrutura_campeonato = database.define("estrutura_campeonato", {
         allowNull: false
     }
 
-})
+}, { timestamps: false })
 
 // estrutura_campeonato.sync({force: true})
 

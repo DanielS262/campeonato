@@ -1,0 +1,13 @@
+
+
+Regras de negócio do app do Campeonato
+
+Assim que o número de times do campeonato criado for atingido se a estrutura do campeonato for de 32 times, por exemplo, o banco de dados sorteará os times
+nas tabelas de 16 avos de final de forma aleatória.
+
+
+
+Quando houver um insert de um time em algum campeonato o script da procedure deve fazer uma busca na tabela "estrutura_campeonato" referente ao campeonato em 
+questão  e retornar o numero maximo de times e armazenar numa variavel.
+Logo após o script deve realizar um select e contar quantos times possuem o mesmo id_campeonato e se for menor do que o valor armazenado na variável ele deve permitir o cadastro do time no
+campeonato, se não, ele deve excluir esse último time.

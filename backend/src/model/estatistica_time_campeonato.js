@@ -42,14 +42,20 @@ const estatistica_time_campeonato = database.define("estatistica_time_campeonato
     saldo_gols: {
         type: Sequelize.INTEGER,
         allowNull: false
+    },
+    jogos: {
+        type: Sequelize.INTEGER,
+        allowNull: false
+    },
+    posicao_time: {
+        type: Sequelize.INTEGER,
+        allowNull: true
     }
-})
+}, {timestamps: false})
 
 estatistica_time_campeonato.hasOne(time, { foreignKey: "id_time", allowNull: false })
 
-
 // estatistica_time_campeonato.sync({force: true})
 
-// estatistica_time_campeonato.sync()
 
 module.exports = estatistica_time_campeonato

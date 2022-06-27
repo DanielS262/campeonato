@@ -19,12 +19,4 @@ sequelize.authenticate()
     console.error("Erro na conexão: " + error)
 })
     
-
-
-
-
 module.exports = sequelize
-
-
-
-

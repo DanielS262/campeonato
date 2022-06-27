@@ -1,0 +1,31 @@
+
+Ordem de criação das tabelas do banco de dados via sequelize
+
+1 - estrutura_campeonato
+2 - campeonato
+3 - usuario 
+4 - time
+5 - jogador
+6 - relac_campeonato_time
+7 - estatistica_time_campeonato
+8 - tabela_campeonato
+9 - desesseis_avos
+10 - oitavas_final
+11 - quartas_final
+12 - semi_final
+13 - final
+
+
+nodemon estrutura_campeonato.js
+nodemon campeonato.js
+nodemon usuario.js
+nodemon time.js
+nodemon jogador.js
+nodemon relac_campeonato_time.js
+nodemon estatistica_time_campeonato.js
+nodemon tabela_campeonato.js
+nodemon desesseis_avos.js
+nodemon oitavas_final.js
+nodemon quartas_final.js
+nodemon semi_final.js
+nodemon final.js
