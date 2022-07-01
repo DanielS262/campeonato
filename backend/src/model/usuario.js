@@ -21,7 +21,8 @@ const usuario = database.define("usuarios", {
         type: Sequelize.TEXT
     },
     telefone: {
-        type: Sequelize.STRING(15)
+        type: Sequelize.STRING(15),
+        unique: true
     },
     email: {
         type:Sequelize.STRING(255),

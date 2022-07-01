@@ -32,13 +32,14 @@ const time = database.define("times", {
 
 usuario.hasMany(time, {
     constraint: true,
-    foreignKey: "id_usuario"
+    foreignKey: "id_usuario",
+    as: "user"
 })
 
 
-// time.sync({force: true})
+//time.sync({force: true})
 
-// time.sync()
+//time.sync()
 
 
 module.exports = time
