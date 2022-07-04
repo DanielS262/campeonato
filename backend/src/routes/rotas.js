@@ -13,6 +13,11 @@ rotas.delete("/campeonato/usuarioDelete", usuario.deleteUsuario)
 
 rotas.post("/campeonato/timePost", time.postTime)
 rotas.get("/campeonato/timeGetAll", time.getAllTimes)
+rotas.get("/campeonato/timeGetIdUsuario/:id_usuario", time.getTimeIdUsuario)
+rotas.get("/campeonato/timeGetNomeTime/:nome_time", time.getTimeNome)
+rotas.get("/campeonato/timeGetNomeUsuario/:nome_usuario", time.getTimeNomeUsuario)
+rotas.put("/campeonato/timeUpdate", time.updateTime)
+rotas.delete("/campeonato/timeDelete", time.deleteTime)
 
 
 rotas.post("/campeonato/postTimeCampeonato", relac_campeonato_time.post_campeonato_time)
