@@ -42,8 +42,22 @@ const oitavas_final = database.define("oitavas_final", {
 
 }, {timestamps: false})
 
-oitavas_final.hasMany(time, { foreignKey: "id_time" , allowNull: false})
-oitavas_final.hasMany(campeonato, { foreignKey: "id_campeonato" , allowNull: false})
+oitavas_final.hasMany(time, {
+    constraint: true,
+    foreignKey: { name: 'id_time', allowNull: true },
+    as: "time04",
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
+})
+
+oitavas_final.hasMany(campeonato, {
+    constraint: true,
+    foreignKey: { name: 'id_campeonato', allowNull: true },
+    as: "campeonato03",
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
+
+})
 
 // oitavas_final.sync({ force: true })
 

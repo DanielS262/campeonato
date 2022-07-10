@@ -5,6 +5,7 @@ const Sequelize = require('sequelize')
 const { where } = require('sequelize')
 const Op = Sequelize.Op
 const relacTime = require('../model/relac_campeonato_time')
+const desesseis_avos = require('../model/desesseis_avos')
 
 const postTime = async (req,res) => {
 
@@ -510,6 +511,28 @@ const deleteTime = async (req,res) => {
                     })
 
                 }
+
+
+
+                buscaDesAvos = await desesseis_avos.findOne({
+                    attributes: ['id_desesseis_avos'],
+                    where: {
+                        id_time: id_time
+                    }
+                })
+
+                if(buscaDesAvos !== null){
+
+                    await desesseis_avos.destroy({
+                        where:{
+                            id_desesseis_avos: buscaDesAvos.id_desesseis_avos
+                        }
+                    })
+
+                }
+
+
+
 
 
                 resposta = await time.destroy({

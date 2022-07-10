@@ -42,8 +42,21 @@ const quartas_final = database.define("quartas_final", {
 
 }, {timestamps: false})
 
-quartas_final.hasMany(time, { foreignKey: "id_time" , allowNull: false})
-quartas_final.hasMany(campeonato, { foreignKey: "id_campeonato" , allowNull: false})
+quartas_final.hasMany(time, {
+    constraint: true,
+    foreignKey: { name: 'id_time', allowNull: true },
+    as: "time05",
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
+})
+
+quartas_final.hasMany(campeonato, { 
+    constraint: true,
+    foreignKey: { name: 'id_campeonato', allowNull: true },
+    as: "campeonato04",
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
+})
 
 // quartas_final.sync({ force: true })
 

@@ -42,8 +42,25 @@ const semi_final = database.define("semi_finais", {
 
 }, {timestamps: false})
 
-semi_final.hasMany(time, { foreignKey: "id_time" , allowNull: false})
-semi_final.hasMany(campeonato, { foreignKey: "id_campeonato" , allowNull: false})
+semi_final.hasMany(time, 
+    {
+        constraint: true,
+        foreignKey: { name: 'id_time', allowNull: true },
+        as: "times02",
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE'
+    })
+
+
+
+semi_final.hasMany(campeonato, 
+    {
+        constraint: true,
+        foreignKey: { name: 'id_campeonato', allowNull: true },
+        as: "campeonato",
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE'
+    })
 
 // semi_final.sync({ force: true })
 

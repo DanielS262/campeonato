@@ -39,7 +39,16 @@ const campeonato = database.define("Campeonatos", {
 })
 
 
-estrutura.belongsTo(campeonato, { foreignKey: "id_estrutura", constraint: true })
+estrutura.belongsTo(campeonato, 
+    
+    {
+        constraint: true,
+        foreignKey: { name: 'id_estrutura', allowNull: true },
+        as: "estrutura",
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE'
+
+    })
 
 // campeonato.sync({force: true})
 

@@ -1,0 +1,13 @@
+
+
+
+Sempre que houver uma inserção de um time novo na tabela "relac_campeonato_times" deve-se realizar uma busca na tabela campeonatos
+através de id_campeonato da 'tabela relac_campeonato_times' e verificar se o número de vagas disponíveis é igual a '0',
+se essa condição for verdadeira a trigger deve pesquisar na tabela 'estrutura_do_campeonato', através do 'id_estrutura' presente na 
+tabela 'campeonatos', o tipo do campeonato (se é pontos corridos ou mata-mata) 
+se for mata-mata de 32 times deve-se preencher a tabela 'desesseis_avos' de forma aleatória
+
+
+
+
+retornar o 'id_estrutura' da tabela 'estrutura do campeonato',

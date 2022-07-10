@@ -42,8 +42,23 @@ const desesseis_avos = database.define("desesseis_avos", {
 
 }, {timestamps: false})
 
-desesseis_avos.hasMany(time, { foreignKey: "id_time" , allowNull: false})
-desesseis_avos.hasMany(campeonato, { foreignKey: "id_campeonato" , allowNull: false})
+desesseis_avos.hasMany(time, {
+    constraint: true,
+    foreignKey: { name: 'id_time', allowNull: true },
+    as: "time03",
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
+})
+
+
+
+desesseis_avos.hasMany(campeonato, {
+    constraint: true,
+    foreignKey: { name: 'id_campeonato', allowNull: true },
+    as: "campeonato02",
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
+})
 
 // desesseis_avos.sync({ force: true })
 

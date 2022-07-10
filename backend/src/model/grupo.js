@@ -37,11 +37,46 @@ const grupo = database.define("grupos", {
     }
 }, {timestamps: false})
 
-campeonato.hasMany(grupo, { foreignKey: "id_campeonato", allowNull: false })
-time.hasOne(grupo, { foreignKey: "id_time01", allowNull: false })
-time.hasOne(grupo, { foreignKey: "id_time02", allowNull: false })
-time.hasOne(grupo, { foreignKey: "id_time03", allowNull: false })
-time.hasOne(grupo, { foreignKey: "id_time04", allowNull: false })
+campeonato.hasMany(grupo, { 
+    constraint: true,
+    foreignKey: { name: 'id_campeonato', allowNull: true },
+    as: "campeonato05",
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
+})
+
+time.hasOne(grupo, {
+    constraint: true,
+    foreignKey: { name: 'id_time01', allowNull: true },
+    as: "time07",
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
+})
+
+time.hasOne(grupo, {
+    constraint: true,
+    foreignKey: { name: 'id_time02', allowNull: true },
+    as: "time08",
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
+})
+
+time.hasOne(grupo, {
+    constraint: true,
+    foreignKey: { name: 'id_time03', allowNull: true },
+    as: "time09",
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
+
+})
+
+time.hasOne(grupo, {
+    constraint: true,
+    foreignKey: { name: 'id_time04', allowNull: true },
+    as: "time10",
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
+})
 
 
 // grupo.sync({force: true})

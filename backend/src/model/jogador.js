@@ -28,7 +28,10 @@ const jogador = database.define("jogadores", {
 
 time.hasMany(jogador, {
     constraint: true,
-    foreignKey: "id_time"
+    foreignKey: { name: 'id_time', allowNull: true },
+    as: "times",
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
 })
 
 

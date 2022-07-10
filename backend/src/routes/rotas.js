@@ -4,6 +4,7 @@ const usuario = require("../controll/usuario")
 const time = require("../controll/time")
 const relac_campeonato_time = require("../controll/relac_campeonato_time")
 
+
 rotas.post("/campeonato/usuarioPost", usuario.postUsuario)
 rotas.get("/campeonato/usuarioGetAll", usuario.getAllUsuarios)
 rotas.get("/campeonato/usuarioGetNome", usuario.getUsuarioNome)
@@ -21,6 +22,7 @@ rotas.delete("/campeonato/timeDelete", time.deleteTime)
 
 
 rotas.post("/campeonato/postTimeCampeonato", relac_campeonato_time.post_campeonato_time)
+
 
 
 

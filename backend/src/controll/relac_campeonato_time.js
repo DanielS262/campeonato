@@ -1,5 +1,6 @@
 const relac_campeonato_time = require('../model/relac_campeonato_time')
 const database = require('../database/connection')
+const functionInsert = require('./function_insert')
 
 const post_campeonato_time = async (req,res) => {
 
@@ -33,7 +34,15 @@ const post_campeonato_time = async (req,res) => {
                                 id_campeonato: id_campeonato,
                                 id_time: id_time
                             })
+
+
+
                             res.status(200).json({timeCampeonato}).end()
+
+                            functionInsert.insertTabelas(id_campeonato)
+
+
+
                         }catch(err){
                             res.status(400).json(err).end()
                         }

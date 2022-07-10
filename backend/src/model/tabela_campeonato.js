@@ -25,7 +25,16 @@ const tabela_campeonato = database.define("tabela_campeonatos", {
 )
 
 
-tabela_campeonato.belongsTo(estatistica_time_campeonato, { foreignKey: "id_estatistica", allowNull: false } )
+tabela_campeonato.belongsTo(estatistica_time_campeonato, 
+    
+    { 
+        constraint: true,
+        foreignKey: { name: 'id_estatistica', allowNull: true },
+        as: "estatistica",
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE'
+    
+    } )
 
 // tabela_campeonato.sync({force: true})
 

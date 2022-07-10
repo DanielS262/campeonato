@@ -32,8 +32,10 @@ const time = database.define("times", {
 
 usuario.hasMany(time, {
     constraint: true,
-    foreignKey: "id_usuario",
-    as: "user"
+    foreignKey: { name: 'id_usuario', allowNull: true },
+    as: "user",
+    onDelete: 'CASCADE',
+    onUpdate: 'CASCADE'
 })
 
 

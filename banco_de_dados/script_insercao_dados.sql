@@ -2,20 +2,26 @@
 
 use campeonato;
 
+insert into usuarios (tipo_usuario, nome, foto, telefone, email, senha, createdAt) values
+(2,"Daniel Souza da Silva", "Sem dados", "19 99826-9341", "dansouza2@live.com", "123456", curdate()),
+(2,"Pedro Henrique Lima", "Sem dados", "19 99826-8874", "phenlima@live.com", "123456", curdate()),
+(2,"Jaqueline Barbosa Santos", "Sem dados", "19 94564-6847", "jaquebsantos@gmail.com", "123456", curdate());
+
+
 
 insert into times (nome, descricao, foto, uf, mascote) values("Red Bull", "Azul e Vermelho", "sem dados", "SP", "Touro");
 
-insert into times (nome, descricao, foto, uf, createdAt) values
-("PSG", "Azul e Vermelho", "sem dados", "SP", curdate()),
-("Celtic", "Verde e Branco", "sem dados", "SP", curdate()),
-("CRB", "Vermelho e Branco", "sem dados", "SP", curdate()),
-("Palmeiras", "Verde e Branco", "sem dados", "SP", curdate()),
-("Cardif", "Azul e Vermelho", "sem dados", "SP", curdate()),
-("Manchester City", "Azul e Branco", "sem dados", "SP", curdate()),
-("Milan", "Preto e Vermelho", "sem dados", "SP", curdate()),
-("Atlhetic Bilbao", "Vermelho e Branco", "sem dados", "SP", curdate()),
-("West Ham", "Azul e Vermelho", "sem dados", "SP", curdate()),
-("Burnley", "Azul e Vermelho", "sem dados", "SP", curdate());
+insert into times (nome, descricao, foto, uf, id_usuario, createdAt) values
+("PSG", "Azul e Vermelho", "sem dados", "SP", 1, curdate()),
+("Celtic", "Verde e Branco", "sem dados", "SP", 3, curdate()),
+("CRB", "Vermelho e Branco", "sem dados", "SP", 2, curdate()),
+("Palmeiras", "Verde e Branco", "sem dados", "SP", 2, curdate()),
+("Cardif", "Azul e Vermelho", "sem dados", "SP", 1, curdate()),
+("Manchester City", "Azul e Branco", "sem dados", "SP", 2, curdate()),
+("Milan", "Preto e Vermelho", "sem dados", "SP", 3, curdate()),
+("Atlhetic Bilbao", "Vermelho e Branco", "sem dados", "SP", 3, curdate()),
+("West Ham", "Azul e Vermelho", "sem dados", "SP", 2, curdate()),
+("Burnley", "Azul e Vermelho", "sem dados", "SP", 1, curdate());
 
 
 insert into relac_campeonato_times (id_time, id_campeonato) values
