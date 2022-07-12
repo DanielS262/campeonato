@@ -84,15 +84,14 @@ const async = require('async')
 // ])
 
 
+    // const usuario = require('./usuario')
+    // usuario.sync({force: true})
 
     // const estrutura_campeonato = require('./estrutura_campeonato')
     // estrutura_campeonato.sync({force: true})
 
     // const campeonato = require('./campeonato')
     // campeonato.sync({force: true})
-
-    // const usuario = require('./usuario')
-    // usuario.sync({force: true})
 
     // const time = require('./time')
     // time.sync({force: true})
@@ -123,4 +122,7 @@ const async = require('async')
 
     // const final = require('./final')
     // final.sync({force: true})
+
+    // const jogos = require('../model/jogos')
+    // jogos.sync({force: true})
     

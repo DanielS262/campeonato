@@ -1,6 +1,7 @@
 const Sequelize = require('sequelize')
 const database = require('../database/connection')
 const estrutura = require('./estrutura_campeonato')
+const usuario = require('../model/usuario')
 
 const campeonato = database.define("Campeonatos", {
    
@@ -16,6 +17,14 @@ const campeonato = database.define("Campeonatos", {
         references: {
             model: estrutura,
             key: "id_estrutura"
+        }
+    },
+
+    id_usuario: {
+        type: Sequelize.INTEGER,
+        references: {
+            model: usuario,
+            key: "id_usuario"
         }
     },
 
@@ -49,6 +58,17 @@ estrutura.belongsTo(campeonato,
         onUpdate: 'CASCADE'
 
     })
+
+    usuario.belongsTo(campeonato, 
+    
+        {
+            constraint: true,
+            foreignKey: { name: 'id_usuario', allowNull: true },
+            as: "usuario",
+            onDelete: 'CASCADE',
+            onUpdate: 'CASCADE'
+    
+        })
 
 // campeonato.sync({force: true})
 

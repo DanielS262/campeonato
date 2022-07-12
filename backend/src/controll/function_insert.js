@@ -3,8 +3,8 @@ const relac_campeonato_time = require('../model/relac_campeonato_time')
 const desesseis_avos = require('../model/desesseis_avos')
 const oitavas_finais = require('../model/oitavas_final')
 const quartas_finais = require('../model/quartas_final')
-const semi_finais = require('../model/semi_final')
-const finais = require('../model/final')
+const jogos = require('../model/jogos')
+
 
 async function insertTabelas(id_campeonato){
 
@@ -121,6 +121,71 @@ async function insertTabelas(id_campeonato){
 
                 }
 
+
+
+                ////////////////////////////////////////
+
+
+                let arrayDesAvos = []
+                
+                const timesDesAvos = await desesseis_avos.findAll({
+                    where: {
+                        id_campeonato: id_campeonato
+                    }
+                })
+
+               
+
+                for(let d = 0; d < timesDesAvos.length; d++){
+
+                    let jsonDesAvos = {
+                        id_campeonato: timesDesAvos[d].id_campeonato,
+                        id_time: timesDesAvos[d].id_time,
+                        lado_chave: timesDesAvos[d].lado_chave,
+                        num_time: timesDesAvos[d].num_time
+                    }
+
+                    arrayDesAvos.push(jsonDesAvos)
+                }
+
+                await arrayDesAvos.sort(function (a, b) {
+                    if (a.num_time > b.num_time) {
+                      return 1;
+                    }
+                    if (a.num_time < b.num_time) {
+                      return -1;
+                    }
+                    // a must be equal to b
+                    return 0;
+                  });
+
+
+                for(let h = 0; h < (arrayDesAvos.length); h+=2){
+
+                    await jogos.create({
+
+                        id_campeonato: id_campeonato,
+                        id_time01: arrayDesAvos[h].id_time,
+                        id_time02: arrayDesAvos[h + 1].id_time,
+                        gols_time01: 0,
+                        gols_time02: 0,
+                        status_jogo: 0
+    
+                    })
+
+
+                }
+
+
+                /////////////////////////////////////////
+
+
+
+
+
+
+
+
             }else if(formRetorno === "Mata-mata" && numEquipesRetorno === 16){
 
                 const stringIDS = await relac_campeonato_time.findAll({
@@ -161,6 +226,65 @@ async function insertTabelas(id_campeonato){
 
                 }
 
+                ///////////////////////////////////////////
+
+
+
+                let arrayOitavas = []
+                
+                const timesOitavas = await oitavas_finais.findAll({
+                    where: {
+                        id_campeonato: id_campeonato
+                    }
+                })
+
+               
+
+                for(let d = 0; d < timesOitavas.length; d++){
+
+                    let jsonOitavas = {
+                        id_campeonato: timesOitavas[d].id_campeonato,
+                        id_time: timesOitavas[d].id_time,
+                        lado_chave: timesOitavas[d].lado_chave,
+                        num_time: timesOitavas[d].num_time
+                    }
+
+                    arrayQuartas.push(jsonOitavas)
+                }
+
+                await arrayOitavas.sort(function (a, b) {
+                    if (a.num_time > b.num_time) {
+                      return 1;
+                    }
+                    if (a.num_time < b.num_time) {
+                      return -1;
+                    }
+                    // a must be equal to b
+                    return 0;
+                  });
+
+
+                for(let h = 0; h < (arrayOitavas.length); h+=2){
+
+                    await jogos.create({
+
+                        id_campeonato: id_campeonato,
+                        id_time01: arrayOitavas[h].id_time,
+                        id_time02: arrayOitavas[h + 1].id_time,
+                        gols_time01: 0,
+                        gols_time02: 0,
+                        status_jogo: 0
+    
+                    })
+
+
+                }
+
+
+
+                /////////////////////////////////////////
+
+
             }else if(formRetorno === "Mata-mata" && numEquipesRetorno === 8){
 
                 const stringIDS = await relac_campeonato_time.findAll({
@@ -199,13 +323,60 @@ async function insertTabelas(id_campeonato){
 
                 }
 
+
+
+
+                let arrayQuartas = []
+                
+                const timesQuartas = await quartas_finais.findAll({
+                    where: {
+                        id_campeonato: id_campeonato
+                    }
+                })
+
+               
+
+                for(let d = 0; d < timesQuartas.length; d++){
+
+                    let jsonQuartas = {
+                        id_campeonato: timesQuartas[d].id_campeonato,
+                        id_time: timesQuartas[d].id_time,
+                        lado_chave: timesQuartas[d].lado_chave,
+                        num_time: timesQuartas[d].num_time
+                    }
+
+                    arrayQuartas.push(jsonQuartas)
+                }
+
+                await arrayQuartas.sort(function (a, b) {
+                    if (a.num_time > b.num_time) {
+                      return 1;
+                    }
+                    if (a.num_time < b.num_time) {
+                      return -1;
+                    }
+                    // a must be equal to b
+                    return 0;
+                  });
+
+
+                for(let h = 0; h < (arrayQuartas.length); h+=2){
+
+                    await jogos.create({
+
+                        id_campeonato: id_campeonato,
+                        id_time01: arrayQuartas[h].id_time,
+                        id_time02: arrayQuartas[h + 1].id_time,
+                        gols_time01: 0,
+                        gols_time02: 0,
+                        status_jogo: 0
+    
+                    })
+
+
+                }
+                
             }
-
-
-
-
-
-
 
     }
 }

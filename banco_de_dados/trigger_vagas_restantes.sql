@@ -1,3 +1,7 @@
+
+-- Este é o Script correto -- 
+
+
 Drop trigger if exists Tgr_tblCampeonato;
 DELIMITER $
 

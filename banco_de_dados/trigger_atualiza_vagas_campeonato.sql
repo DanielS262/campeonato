@@ -1,3 +1,5 @@
+-- Este é o script correto -- 
+
 DROP TRIGGER IF EXISTS Tgr_delete_time;
 DELIMITER $
 

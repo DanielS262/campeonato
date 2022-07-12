@@ -3,6 +3,7 @@ const rotas = express.Router()
 const usuario = require("../controll/usuario")
 const time = require("../controll/time")
 const relac_campeonato_time = require("../controll/relac_campeonato_time")
+const campeonato = require('../controll/campeonato')
 
 
 rotas.post("/campeonato/usuarioPost", usuario.postUsuario)
@@ -24,6 +25,11 @@ rotas.delete("/campeonato/timeDelete", time.deleteTime)
 rotas.post("/campeonato/postTimeCampeonato", relac_campeonato_time.post_campeonato_time)
 
 
-
+rotas.get("/campeonato/getAllCampeonatos", campeonato.getAllCampeonatos)
+rotas.post("/campeonato/postCampeonato", campeonato.postCampeonato)
+rotas.get("/campeonato/getCampeonatoID/:id_campeonato", campeonato.getCampeonatoID)
+rotas.get("/campeonato/getCampeonatoNome/:nome", campeonato.getCampeonatoNome)
+rotas.put("/campeonato/updateCampeonato", campeonato.updateCampeonato)
+rotas.delete("/campeonato/deleteCampeonato", campeonato.deleteCampeonato)
 
 module.exports = rotas

@@ -5,7 +5,7 @@ const campeonato = require('./campeonato')
 
 const quartas_final = database.define("quartas_final", {
 
-    id_oitavas_final: {
+    id_quartas_final: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
         primaryKey: true,

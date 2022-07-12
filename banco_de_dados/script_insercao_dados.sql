@@ -54,8 +54,8 @@ insert into estrutura_campeonatos (tipo, formato, numero_de_equipes, numero_de_g
 ("Copa", "Mata-mata", 8, 2);
 
 
-insert into campeonatos (id_estrutura, nome, foto, vagas_restantes, vagas_preenchidas, vagas_totais, createdAt, updatedAt) values
-(6, "Copa Jaguariúna de Futsal", "sem dados", (select numero_de_equipes from estrutura_campeonatos where id_estrutura = 6), 0, 
+insert into campeonatos (id_estrutura, id_usuario, nome, foto, vagas_restantes, vagas_preenchidas, vagas_totais, createdAt, updatedAt) values
+(6, 1, "Copa Jaguariúna de Futsal", "sem dados", (select numero_de_equipes from estrutura_campeonatos where id_estrutura = 6), 0, 
 (select numero_de_equipes from estrutura_campeonatos where id_estrutura = 6), Curdate(), Curdate());
 
 insert into campeonatos (id_estrutura, nome, foto, vagas_restantes, vagas_preenchidas, createdAt, updatedAt) values
