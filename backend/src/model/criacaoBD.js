@@ -126,3 +126,5 @@ const async = require('async')
     // const jogos = require('../model/jogos')
     // jogos.sync({force: true})
     
+    // const campeao = require('../model/campeao')
+    // campeao.sync({force: true})

@@ -6,6 +6,10 @@ const { where } = require('sequelize')
 const Op = Sequelize.Op
 const relacTime = require('../model/relac_campeonato_time')
 const desesseis_avos = require('../model/desesseis_avos')
+const quartas_finais = require('../model/quartas_final')
+const semi_finais = require('../model/semi_final')
+const finais = require('../model/final')
+const oitavas_final = require('../model/oitavas_final')
 
 const postTime = async (req,res) => {
 
@@ -514,7 +518,7 @@ const deleteTime = async (req,res) => {
 
 
 
-                buscaDesAvos = await desesseis_avos.findOne({
+                let buscaDesAvos = await desesseis_avos.findOne({
                     attributes: ['id_desesseis_avos'],
                     where: {
                         id_time: id_time
@@ -531,9 +535,22 @@ const deleteTime = async (req,res) => {
 
                 }
 
+                let buscaOitavas = await oitavas_final.findOne({
+                    attributes: ['id_oitavas_final'],
+                    where: {
+                        id_time: id_time
+                    }
+                })
 
+                if(buscaDesAvos !== null){
 
+                    await desesseis_avos.destroy({
+                        where:{
+                            id_desesseis_avos: buscaDesAvos.id_desesseis_avos
+                        }
+                    })
 
+                }
 
                 resposta = await time.destroy({
                     where: {
@@ -558,13 +575,6 @@ const deleteTime = async (req,res) => {
 
             res.status(400).json(err).end()
         }
-
-
-
-
-
-        
-
 
     }else{
         res.status(400).json({"err": "faça login para excluir o time"}).end()
